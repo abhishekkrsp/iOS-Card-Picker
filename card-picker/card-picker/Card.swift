@@ -7,8 +7,12 @@
 
 import Foundation
 
+enum CardStates {
+    case faceUp, faceDown
+}
+
 struct Card {
-    var isFaceUp = false
-    var isRemoved = false
-    var emoji: String
+    private var isFaceUp = false
+    private var emoji: String
+
 }
