@@ -10,40 +10,25 @@ import Foundation
 
 class CardPicker {
     var cards = [Card]()
-    var indexOfOneAndOnlyFaceUpCard: Int? {
-        get {
-            var foundIndex: Int?
-            for index in cards.indices {
-                if cards[index].isFace == .faceUp {
-                    if foundIndex == nil {
-                        foundIndex = index
-                    } else {
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
-        }
-        set {
-            for index in cards.indices {
-                if index == newValue {
-                    cards[index].isFace = .faceUp
-                } else {
-                    cards[index].isFace = .faceDown
-                }
-            }
+    var indexOfOneAndOnlyFaceUpCard: Int?
+    
+    func chooseCard(at index: Int) {
+        if cards[index].state != .matched  {
+            cards[index].state = .faceUp
         }
     }
     
-    func chooseCard(at index: Int){
-        if !cards[index].isMatched {
-            if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
-                cards[index].isFace = .faceUp
-                
-                if cards[matchIndex].identifier == cards[index].identifier {
-                    cards[matchIndex].isMatched = true
-                    cards[index].isMatched = true
+    func matchCard(at index: Int) {
+        if cards[index].state != .matched {
+            if let matchIndex = indexOfOneAndOnlyFaceUpCard, index != matchIndex {
+                if cards[index].identifier == cards[matchIndex].identifier {
+                    cards[index].state = .matched
+                    cards[matchIndex].state = .matched
+                } else {
+                    cards[index].state = .faceDown
+                    cards[matchIndex].state = .faceDown
                 }
+                indexOfOneAndOnlyFaceUpCard = nil
             } else {
                 indexOfOneAndOnlyFaceUpCard = index
             }
@@ -51,7 +36,7 @@ class CardPicker {
     }
     
     init(numberOfPairsOfCards: Int) {
-        for _ in 1...12 {
+        for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card]
         }

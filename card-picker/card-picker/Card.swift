@@ -8,12 +8,11 @@
 import Foundation
 
 enum CardStates {
-    case faceUp, faceDown
+    case faceUp, faceDown, matched
 }
 
 struct Card {
-    var isFace: CardStates = .faceDown
-    var isMatched = false
+    var state: CardStates = .faceDown
     var emoji = String()
     var identifier: Int
     static var identifierFactory = 0
@@ -22,7 +21,7 @@ struct Card {
         return identifierFactory
     }
     init() {
-        self.identifier = Card.getUniqueIdentifier()
+        self.identifier = Card.getUniqueIdentifier()/2
     }
 
 }
