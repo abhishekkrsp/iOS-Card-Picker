@@ -47,7 +47,7 @@ class ViewController: UIViewController {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
             game.matchCard(at: cardNumber)
-            Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateViewFromModel), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateViewFromModel), userInfo: nil, repeats: false)
         }
         else {
             print("Clicked Button is not in Array cardbutton")
