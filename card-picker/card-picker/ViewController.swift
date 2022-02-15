@@ -7,41 +7,47 @@
 
 
 
-//corner radius, stroke width and outlet
-// for selection of background color : #colorLiteral()
 import UIKit
 
 
-//?How to make dynamic size button
-//?streching
-//?buttons have  differnt behaviour after two-click as intial
-//?I am not able to increase the font size after clicking it is automaticaly taking the default size
-// diffrence between weak var and var
-
 class ViewController: UIViewController {
-
+    lazy var game = CardPicker(numberOfPairsOfCards: numberOfPairsOfCards)
+    var numberOfPairsOfCards: Int {
+        cardButtons.count
+    }
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
     
-    var faceUp = 0
-    
-    var emojis = ["🥳", "😜", "😜", "👽", "🥳", "👽", "🤝", "🤝", "👽", "😋", "👽", "😋"]
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
-   
     @IBOutlet var cardButtons: [UIButton]!
     
-    
+    func switchCardState(with button: UIButton, for card: Card) {
+        switch card.state {
+        case .faceUp:
+            button.setTitle(emoji(for: card), for: .normal);
+            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        case .faceDown:
+            button.setTitle("", for: .normal)
+            button.backgroundColor = #colorLiteral(red: 0.5791940689, green: 0.1280144453, blue: 0.5726861358, alpha: 1)
+        case .matched:
+            button.setTitle("", for: .normal)
+            button.isUserInteractionEnabled = false
+            button.backgroundColor = #colorLiteral(red: 1, green: 0.2172311246, blue: 1, alpha: 0)
+        }
+    }
     
     @IBAction func touchCard(_ sender: UIButton) {
         flipCount += 1
-        if let index = cardButtons.firstIndex(of: sender) {
-            print("button \(index) is clicked")
-            flipCard(with: emojis[index], on: sender)
+        if let cardNumber = cardButtons.firstIndex(of: sender) {
+            game.chooseCard(at: cardNumber)
+            updateViewFromModel()
+            game.matchCard(at: cardNumber)
+            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateViewFromModel), userInfo: nil, repeats: false)
         }
         else {
             print("Clicked Button is not in Array cardbutton")
@@ -49,46 +55,24 @@ class ViewController: UIViewController {
         
     }
     
-    func flipCard(with emoji: String, on button: UIButton) {
-        print("emoji: \(button.currentTitle)")
-        if button.currentTitle != nil {
-            faceUp -= 1
-            button.setTitle(nil, for: .normal)
-            button.backgroundColor = #colorLiteral(red: 0.5791940689, green: 0.1280144453, blue: 0.5726861358, alpha: 1)
-
-            
-        }
-        else {
-            
-            if faceUp < 2 {
-                faceUp += 1
-                button.setTitle(emoji, for: .normal)
-                button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                button.titleLabel?.font = button.titleLabel?.font.withSize(50)
-            }
-        }
-        
-        if faceUp == 2{
-            var flippedUpButton: UIButton? = nil
-            for card in cardButtons {
-                if !card.isHidden && card.currentTitle != nil {
-                    if let flippedUpButton = flippedUpButton {
-                        if card.currentTitle == flippedUpButton.currentTitle {
-                            print(cardButtons.index(of: card))
-                            flippedUpButton.isHidden = true
-                            card.isHidden = true
-                            faceUp = 0
-                            return
-                        }
-                    }
-                    else {
-                        print("Flipped button = card")
-                        print(cardButtons.index(of: card))
-                        flippedUpButton = card
-                    }
-                }
-            }
+    @objc func updateViewFromModel() {
+        for index in cardButtons.indices {
+            let button = cardButtons[index]
+            let card = game.cards[index]
+            switchCardState(with: button, for: card)
         }
     }
+    
+    var emojiChoices = ["🥳", "😜", "🤝", "👽", "😋", "✌️", "🥳", "😜", "🤝", "👽", "😋", "✌️"]
+
+    var emoji = [Int: String]()
+    func emoji(for card: Card) -> String {
+        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
+            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        }
+        return emoji[card.identifier] ?? "?"
+    }
+    
 }
 
