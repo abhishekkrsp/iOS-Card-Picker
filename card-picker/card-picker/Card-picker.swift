@@ -38,7 +38,7 @@ class CardPicker {
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
-            cards += [card]
+            cards += [card, card]
         }
     }
 }

@@ -16,12 +16,13 @@ struct Card {
     var emoji = String()
     var identifier: Int
     static var identifierFactory = 0
+    static var lock = true
     static func getUniqueIdentifier() -> Int {
         identifierFactory += 1;
         return identifierFactory
     }
     init() {
-        self.identifier = Card.getUniqueIdentifier()/2
+        self.identifier = Card.getUniqueIdentifier()
     }
 
 }

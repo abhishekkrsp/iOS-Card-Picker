@@ -13,19 +13,18 @@ import UIKit
 class ViewController: UIViewController {
     lazy var game = CardPicker(numberOfPairsOfCards: numberOfPairsOfCards)
     var numberOfPairsOfCards: Int {
-        cardButtons.count
+        (cardButtons.count+1)/2
     }
+    var isShuffled = false
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
     
-    
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBOutlet var cardButtons: [UIButton]!
-    
     func switchCardState(with button: UIButton, for card: Card) {
         switch card.state {
         case .faceUp:
@@ -42,12 +41,16 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
+        if !isShuffled {
+            cardButtons = cardButtons.shuffled();
+            isShuffled.toggle()
+        }
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
             game.matchCard(at: cardNumber)
-            Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateViewFromModel), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateViewFromModel), userInfo: nil, repeats: false)
         }
         else {
             print("Clicked Button is not in Array cardbutton")
@@ -63,7 +66,8 @@ class ViewController: UIViewController {
         }
     }
     
-    var emojiChoices = ["🥳", "😜", "🤝", "👽", "😋", "✌️", "🥳", "😜", "🤝", "👽", "😋", "✌️"]
+    var emojiChoices = ["🥳", "😜", "🤝", "👽", "😋", "✌️",]
+
 
     var emoji = [Int: String]()
     func emoji(for card: Card) -> String {
