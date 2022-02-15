@@ -12,7 +12,18 @@ enum CardStates {
 }
 
 struct Card {
-    private var isFaceUp = false
-    private var emoji: String
+    var isFace: CardStates = .faceDown
+    var isMatched = false
+    var emoji = String()
+    var identifier: Int
+    static var identifierFactory = 0
+    static func getUniqueIdentifier() -> Int {
+        identifierFactory += 1;
+        return identifierFactory
+    }
+    init() {
+        self.identifier = Card.getUniqueIdentifier()
+    }
 
 }
+
