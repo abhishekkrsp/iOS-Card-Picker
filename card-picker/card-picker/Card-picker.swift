@@ -8,16 +8,17 @@
 import Foundation
 
 
-class CardPicker {
+final class CardPicker {
     var cards = [Card]()
-    var indexOfOneAndOnlyFaceUpCard: Int?
+    private var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int) {
         cards[index].state = .faceUp
     }
     
     func matchCard(at index: Int) -> (Int?, Int?) {
-        if let matchIndex = indexOfOneAndOnlyFaceUpCard, index != matchIndex {
+        if let matchIndex = indexOfOneAndOnlyFaceUpCard,
+           index != matchIndex {
             if cards[index].identifier == cards[matchIndex].identifier {
                 cards[index].state = .matched
                 cards[matchIndex].state = .matched
@@ -33,6 +34,15 @@ class CardPicker {
             return (nil,nil)
         }
     }
+    
+    func canProceed(with index: Int) -> Bool {
+        if cards[index].state == .matched {
+            return false
+        }
+        return true
+    }
+    
+    
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
             let card = Card()

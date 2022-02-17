@@ -22,7 +22,7 @@
 		EF0317E727B65247006536C7 /* Card-picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card-picker.swift"; sourceTree = "<group>"; };
 		EF0317E927B652B1006536C7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		EF3E684127BE0D3D00813717 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
-		EFB774E627B507CA0026E36C /* card-picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "card-picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFB774E627B507CA0026E36C /* cardPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cardPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB774E927B507CA0026E36C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB774EB27B507CA0026E36C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		EFB774ED27B507CA0026E36C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,6 @@
 		EFB774DD27B507CA0026E36C = {
 			isa = PBXGroup;
 			children = (
-				EF3E684127BE0D3D00813717 /* Emojis.swift */,
 				EFB774E827B507CA0026E36C /* card-picker */,
 				EFB774E727B507CA0026E36C /* Products */,
 			);
@@ -55,7 +54,7 @@
 		EFB774E727B507CA0026E36C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EFB774E627B507CA0026E36C /* card-picker.app */,
+				EFB774E627B507CA0026E36C /* cardPicker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,6 +66,7 @@
 				EFB774EB27B507CA0026E36C /* SceneDelegate.swift */,
 				EFB774ED27B507CA0026E36C /* ViewController.swift */,
 				EF0317E727B65247006536C7 /* Card-picker.swift */,
+				EF3E684127BE0D3D00813717 /* Emojis.swift */,
 				EF0317E927B652B1006536C7 /* Card.swift */,
 				EFB774EF27B507CA0026E36C /* Main.storyboard */,
 				EFB774F227B507CB0026E36C /* Assets.xcassets */,
@@ -79,9 +79,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EFB774E527B507CA0026E36C /* card-picker */ = {
+		EFB774E527B507CA0026E36C /* cardPicker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EFB774FA27B507CB0026E36C /* Build configuration list for PBXNativeTarget "card-picker" */;
+			buildConfigurationList = EFB774FA27B507CB0026E36C /* Build configuration list for PBXNativeTarget "cardPicker" */;
 			buildPhases = (
 				EFB774E227B507CA0026E36C /* Sources */,
 				EFB774E327B507CA0026E36C /* Frameworks */,
@@ -91,9 +91,9 @@
 			);
 			dependencies = (
 			);
-			name = "card-picker";
+			name = cardPicker;
 			productName = "card-picker";
-			productReference = EFB774E627B507CA0026E36C /* card-picker.app */;
+			productReference = EFB774E627B507CA0026E36C /* cardPicker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,7 +124,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EFB774E527B507CA0026E36C /* card-picker */,
+				EFB774E527B507CA0026E36C /* cardPicker */,
 			);
 		};
 /* End PBXProject section */
@@ -362,7 +362,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EFB774FA27B507CB0026E36C /* Build configuration list for PBXNativeTarget "card-picker" */ = {
+		EFB774FA27B507CB0026E36C /* Build configuration list for PBXNativeTarget "cardPicker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EFB774FB27B507CB0026E36C /* Debug */,

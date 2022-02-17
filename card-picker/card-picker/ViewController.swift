@@ -17,6 +17,7 @@ extension UIColor {
 
 
 class ViewController: UIViewController {
+    
     lazy var game = CardPicker(numberOfPairsOfCards: numberOfPairsOfCards)
     
     var emojis = Emojis()
@@ -42,12 +43,12 @@ class ViewController: UIViewController {
     
     var flipIndex: (Int?, Int?)
     
-    func switchCardState(with index: Int?) {
-        if index == nil {
+    func switchCardState(ofCard index: Int?) {
+        guard let index = index else {
             return
         }
-        let button = cardButtons[index!]
-        let card = game.cards[index!]
+        let button = cardButtons[index]
+        let card = game.cards[index]
         button.setTitle(emojis.emoji(for: card), for: .normal);
         switch card.state {
         case .faceUp:
@@ -61,29 +62,34 @@ class ViewController: UIViewController {
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
-        flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
             self.timer?.invalidate()
-            
+            updateViewFromModelOfflipIndex()
+            if !game.canProceed(with: cardNumber){
+                return
+            }
+            flipCount += 1
             game.chooseCard(at: cardNumber)
-            updateViewFromModel(of: cardNumber)
+            switchCardState(ofCard: cardNumber)
             flipIndex = game.matchCard(at: cardNumber)
 
-            self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { _ in
-                self.updateViewFromModel(of: cardNumber)
+            self.timer = Timer.scheduledTimer(withTimeInterval: 0.5,
+                                              repeats: false) { _ in
+                self.updateViewFromModelOfflipIndex()
             }
         }
     }
     
-    func updateViewFromModel(of index: Int) {
-        switchCardState(with: index)
-        switchCardState(with: flipIndex.0)
-        switchCardState(with: flipIndex.1)
+    func updateViewFromModelOfflipIndex() {
+        switchCardState(ofCard: flipIndex.0)
+        switchCardState(ofCard: flipIndex.1)
+        flipIndex = (nil, nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cardButtons = cardButtons.shuffled();
+        emojis.setEmojiChoices()
     }
     
 }
