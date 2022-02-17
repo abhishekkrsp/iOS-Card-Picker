@@ -16,7 +16,6 @@ struct Card {
     var emoji = String()
     var identifier: Int
     static var identifierFactory = 0
-    static var lock = true
     static func getUniqueIdentifier() -> Int {
         identifierFactory += 1;
         return identifierFactory

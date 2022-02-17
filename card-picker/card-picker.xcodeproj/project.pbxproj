@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EF0317E827B65247006536C7 /* Card-picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0317E727B65247006536C7 /* Card-picker.swift */; };
 		EF0317EA27B652B1006536C7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0317E927B652B1006536C7 /* Card.swift */; };
+		EF3E684227BE0D3D00813717 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E684127BE0D3D00813717 /* Emojis.swift */; };
 		EFB774EA27B507CA0026E36C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB774E927B507CA0026E36C /* AppDelegate.swift */; };
 		EFB774EC27B507CA0026E36C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB774EB27B507CA0026E36C /* SceneDelegate.swift */; };
 		EFB774EE27B507CA0026E36C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB774ED27B507CA0026E36C /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		EF0317E727B65247006536C7 /* Card-picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card-picker.swift"; sourceTree = "<group>"; };
 		EF0317E927B652B1006536C7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		EF3E684127BE0D3D00813717 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		EFB774E627B507CA0026E36C /* card-picker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "card-picker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB774E927B507CA0026E36C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB774EB27B507CA0026E36C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 		EFB774DD27B507CA0026E36C = {
 			isa = PBXGroup;
 			children = (
+				EF3E684127BE0D3D00813717 /* Emojis.swift */,
 				EFB774E827B507CA0026E36C /* card-picker */,
 				EFB774E727B507CA0026E36C /* Products */,
 			);
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF3E684227BE0D3D00813717 /* Emojis.swift in Sources */,
 				EFB774EE27B507CA0026E36C /* ViewController.swift in Sources */,
 				EF0317E827B65247006536C7 /* Card-picker.swift in Sources */,
 				EF0317EA27B652B1006536C7 /* Card.swift in Sources */,

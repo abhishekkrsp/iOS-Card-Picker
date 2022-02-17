@@ -9,73 +9,81 @@
 
 import UIKit
 
+extension UIColor {
+    static let flipUpColor: UIColor = UIColor(named: "flipUpColor")!
+    static let flipDownColor: UIColor = UIColor(named: "flipDownColor")!
+    static let matchedColor: UIColor = UIColor(named: "matchedColor")!
+}
+
 
 class ViewController: UIViewController {
     lazy var game = CardPicker(numberOfPairsOfCards: numberOfPairsOfCards)
+    
+    var emojis = Emojis()
+    
     var numberOfPairsOfCards: Int {
         (cardButtons.count+1)/2
     }
-    var isShuffled = false
+    
+    var activeButtons : UIButton?
+    
     var flipCount = 0 {
         didSet {
             flipCountLabel.text = "Flips: \(flipCount)"
         }
     }
     
+    var timer:Timer?
+    
+    
     @IBOutlet weak var flipCountLabel: UILabel!
     
     @IBOutlet var cardButtons: [UIButton]!
-    func switchCardState(with button: UIButton, for card: Card) {
+    
+    var flipIndex: (Int?, Int?)
+    
+    func switchCardState(with index: Int?) {
+        if index == nil {
+            return
+        }
+        let button = cardButtons[index!]
+        let card = game.cards[index!]
+        button.setTitle(emojis.emoji(for: card), for: .normal);
         switch card.state {
         case .faceUp:
-            button.setTitle(emoji(for: card), for: .normal);
-            button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            button.backgroundColor = UIColor.flipUpColor
         case .faceDown:
-            button.setTitle("", for: .normal)
-            button.backgroundColor = #colorLiteral(red: 0.5791940689, green: 0.1280144453, blue: 0.5726861358, alpha: 1)
+            button.backgroundColor = UIColor.flipDownColor
         case .matched:
-            button.setTitle("", for: .normal)
             button.isUserInteractionEnabled = false
-            button.backgroundColor = #colorLiteral(red: 1, green: 0.2172311246, blue: 1, alpha: 0)
+            button.backgroundColor = UIColor.matchedColor
         }
     }
     
     @IBAction func touchCard(_ sender: UIButton) {
-        if !isShuffled {
-            cardButtons = cardButtons.shuffled();
-            isShuffled.toggle()
-        }
         flipCount += 1
         if let cardNumber = cardButtons.firstIndex(of: sender) {
+            self.timer?.invalidate()
+            
             game.chooseCard(at: cardNumber)
-            updateViewFromModel()
-            game.matchCard(at: cardNumber)
-            Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(updateViewFromModel), userInfo: nil, repeats: false)
-        }
-        else {
-            print("Clicked Button is not in Array cardbutton")
-        }
-        
-    }
-    
-    @objc func updateViewFromModel() {
-        for index in cardButtons.indices {
-            let button = cardButtons[index]
-            let card = game.cards[index]
-            switchCardState(with: button, for: card)
+            updateViewFromModel(of: cardNumber)
+            flipIndex = game.matchCard(at: cardNumber)
+
+            self.timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { _ in
+                self.updateViewFromModel(of: cardNumber)
+            }
         }
     }
     
-    var emojiChoices = ["🥳", "😜", "🤝", "👽", "😋", "✌️",]
-
-
-    var emoji = [Int: String]()
-    func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
-        }
-        return emoji[card.identifier] ?? "?"
+    func updateViewFromModel(of index: Int) {
+        switchCardState(with: index)
+        switchCardState(with: flipIndex.0)
+        switchCardState(with: flipIndex.1)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        cardButtons = cardButtons.shuffled();
     }
     
 }

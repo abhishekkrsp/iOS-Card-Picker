@@ -13,28 +13,26 @@ class CardPicker {
     var indexOfOneAndOnlyFaceUpCard: Int?
     
     func chooseCard(at index: Int) {
-        if cards[index].state != .matched  {
-            cards[index].state = .faceUp
-        }
+        cards[index].state = .faceUp
     }
     
-    func matchCard(at index: Int) {
-        if cards[index].state != .matched {
-            if let matchIndex = indexOfOneAndOnlyFaceUpCard, index != matchIndex {
-                if cards[index].identifier == cards[matchIndex].identifier {
-                    cards[index].state = .matched
-                    cards[matchIndex].state = .matched
-                } else {
-                    cards[index].state = .faceDown
-                    cards[matchIndex].state = .faceDown
-                }
-                indexOfOneAndOnlyFaceUpCard = nil
+    func matchCard(at index: Int) -> (Int?, Int?) {
+        if let matchIndex = indexOfOneAndOnlyFaceUpCard, index != matchIndex {
+            if cards[index].identifier == cards[matchIndex].identifier {
+                cards[index].state = .matched
+                cards[matchIndex].state = .matched
             } else {
-                indexOfOneAndOnlyFaceUpCard = index
+                cards[index].state = .faceDown
+                cards[matchIndex].state = .faceDown
             }
+            indexOfOneAndOnlyFaceUpCard = nil
+            return (matchIndex,index)
+            
+        } else {
+            indexOfOneAndOnlyFaceUpCard = index
+            return (nil,nil)
         }
     }
-    
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
