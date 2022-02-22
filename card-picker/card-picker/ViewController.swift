@@ -18,6 +18,7 @@ extension UIColor {
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var gameOver: UILabel!
     lazy var game = CardPicker(numberOfPairsOfCards: numberOfPairsOfCards)
     
     var emojis = Emojis()
@@ -35,7 +36,6 @@ class ViewController: UIViewController {
     }
     
     var timer:Timer?
-    
     
     @IBOutlet weak var flipCountLabel: UILabel!
     
@@ -79,11 +79,18 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+    func gameOverMessage() {
+        let mString = "Game\n Over\n" + "Score: \(flipCount)"
+        gameOver.text = mString
+        flipCountLabel.text = ""
+    }
     func updateViewFromModelOfflipIndex() {
         switchCardState(ofCard: flipIndex.0)
         switchCardState(ofCard: flipIndex.1)
         flipIndex = (nil, nil)
+        if game.remainingCards <= 0 {
+            gameOverMessage()
+        }
     }
     
     override func viewDidLoad() {

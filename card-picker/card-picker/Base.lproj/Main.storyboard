@@ -156,20 +156,31 @@
                                 <color key="textColor" systemColor="systemOrangeColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAB-uH-PTB">
+                                <rect key="frame" x="20" y="44" width="388" height="848"/>
+                                <fontDescription key="fontDescription" type="system" weight="black" pointSize="50"/>
+                                <color key="textColor" systemColor="systemPurpleColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
+                            <constraint firstItem="tAB-uH-PTB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="53O-Ez-Ikr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2t5-Ib-4ZC" secondAttribute="bottom" id="GcG-wL-AAv"/>
                             <constraint firstItem="uBI-yJ-m5f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JmW-9m-hd4"/>
                             <constraint firstItem="uBI-yJ-m5f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KRx-uz-cYd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tAB-uH-PTB" secondAttribute="trailing" id="Uiv-4d-9bs"/>
+                            <constraint firstItem="tAB-uH-PTB" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="VEi-aY-1Qi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uBI-yJ-m5f" secondAttribute="trailing" constant="20" id="Yvo-om-UOM"/>
                             <constraint firstItem="2t5-Ib-4ZC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="csU-Xf-hqk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tAB-uH-PTB" secondAttribute="bottom" id="gs8-jt-Ajw"/>
                             <constraint firstItem="2t5-Ib-4ZC" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uBI-yJ-m5f" secondAttribute="bottom" id="oh8-Aa-7fu"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="flipCountLabel" destination="2t5-Ib-4ZC" id="onJ-3A-mE8"/>
+                        <outlet property="gameOver" destination="tAB-uH-PTB" id="4n0-CZ-pTR"/>
                         <outletCollection property="cardButtons" destination="5Zz-4G-22F" collectionClass="NSMutableArray" id="Urc-e5-rCv"/>
                         <outletCollection property="cardButtons" destination="Gof-uW-MY8" collectionClass="NSMutableArray" id="KCY-6X-lv8"/>
                         <outletCollection property="cardButtons" destination="VgI-4D-EIm" collectionClass="NSMutableArray" id="Bjf-PQ-QlS"/>
@@ -195,6 +206,9 @@
         </systemColor>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

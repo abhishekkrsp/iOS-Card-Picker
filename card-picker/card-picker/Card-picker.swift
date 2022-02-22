@@ -11,6 +11,7 @@ import Foundation
 final class CardPicker {
     var cards = [Card]()
     private var indexOfOneAndOnlyFaceUpCard: Int?
+    var remainingCards : Int
     
     func chooseCard(at index: Int) {
         cards[index].state = .faceUp
@@ -22,6 +23,7 @@ final class CardPicker {
             if cards[index].identifier == cards[matchIndex].identifier {
                 cards[index].state = .matched
                 cards[matchIndex].state = .matched
+                remainingCards -= 1
             } else {
                 cards[index].state = .faceDown
                 cards[matchIndex].state = .faceDown
@@ -44,6 +46,7 @@ final class CardPicker {
     
     
     init(numberOfPairsOfCards: Int) {
+        remainingCards = numberOfPairsOfCards
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
