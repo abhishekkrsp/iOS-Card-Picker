@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		EF0317E827B65247006536C7 /* Card-picker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0317E727B65247006536C7 /* Card-picker.swift */; };
 		EF0317EA27B652B1006536C7 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0317E927B652B1006536C7 /* Card.swift */; };
+		EF094AB327C504DD002BCB8B /* ModeSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF094AB227C504DD002BCB8B /* ModeSelectionViewController.swift */; };
 		EF3E684227BE0D3D00813717 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E684127BE0D3D00813717 /* Emojis.swift */; };
 		EFB774EA27B507CA0026E36C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB774E927B507CA0026E36C /* AppDelegate.swift */; };
 		EFB774EC27B507CA0026E36C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB774EB27B507CA0026E36C /* SceneDelegate.swift */; };
-		EFB774EE27B507CA0026E36C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB774ED27B507CA0026E36C /* ViewController.swift */; };
+		EFB774EE27B507CA0026E36C /* SinglePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB774ED27B507CA0026E36C /* SinglePlayerViewController.swift */; };
 		EFB774F127B507CA0026E36C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFB774EF27B507CA0026E36C /* Main.storyboard */; };
 		EFB774F327B507CB0026E36C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFB774F227B507CB0026E36C /* Assets.xcassets */; };
 		EFB774F627B507CB0026E36C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFB774F427B507CB0026E36C /* LaunchScreen.storyboard */; };
@@ -21,11 +22,12 @@
 /* Begin PBXFileReference section */
 		EF0317E727B65247006536C7 /* Card-picker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Card-picker.swift"; sourceTree = "<group>"; };
 		EF0317E927B652B1006536C7 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		EF094AB227C504DD002BCB8B /* ModeSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeSelectionViewController.swift; sourceTree = "<group>"; };
 		EF3E684127BE0D3D00813717 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		EFB774E627B507CA0026E36C /* cardPicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cardPicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB774E927B507CA0026E36C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFB774EB27B507CA0026E36C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EFB774ED27B507CA0026E36C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EFB774ED27B507CA0026E36C /* SinglePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayerViewController.swift; sourceTree = "<group>"; };
 		EFB774F027B507CA0026E36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EFB774F227B507CB0026E36C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFB774F527B507CB0026E36C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,11 +66,12 @@
 			children = (
 				EFB774E927B507CA0026E36C /* AppDelegate.swift */,
 				EFB774EB27B507CA0026E36C /* SceneDelegate.swift */,
-				EFB774ED27B507CA0026E36C /* ViewController.swift */,
+				EFB774ED27B507CA0026E36C /* SinglePlayerViewController.swift */,
 				EF0317E727B65247006536C7 /* Card-picker.swift */,
 				EF3E684127BE0D3D00813717 /* Emojis.swift */,
 				EF0317E927B652B1006536C7 /* Card.swift */,
 				EFB774EF27B507CA0026E36C /* Main.storyboard */,
+				EF094AB227C504DD002BCB8B /* ModeSelectionViewController.swift */,
 				EFB774F227B507CB0026E36C /* Assets.xcassets */,
 				EFB774F427B507CB0026E36C /* LaunchScreen.storyboard */,
 				EFB774F727B507CB0026E36C /* Info.plist */,
@@ -148,10 +151,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF3E684227BE0D3D00813717 /* Emojis.swift in Sources */,
-				EFB774EE27B507CA0026E36C /* ViewController.swift in Sources */,
+				EFB774EE27B507CA0026E36C /* SinglePlayerViewController.swift in Sources */,
 				EF0317E827B65247006536C7 /* Card-picker.swift in Sources */,
 				EF0317EA27B652B1006536C7 /* Card.swift in Sources */,
 				EFB774EA27B507CA0026E36C /* AppDelegate.swift in Sources */,
+				EF094AB327C504DD002BCB8B /* ModeSelectionViewController.swift in Sources */,
 				EFB774EC27B507CA0026E36C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
