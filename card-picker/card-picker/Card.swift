@@ -7,8 +7,22 @@
 
 import Foundation
 
-struct Card {
-    var isFaceUp = false
-    var isRemoved = false
-    var emoji: String
+enum CardStates {
+    case faceUp, faceDown, matched
 }
+
+struct Card {
+    var state: CardStates = .faceDown
+    var emoji = String()
+    var identifier: Int
+    static var identifierFactory = 0
+    static func getUniqueIdentifier() -> Int {
+        identifierFactory += 1;
+        return identifierFactory
+    }
+    init() {
+        self.identifier = Card.getUniqueIdentifier()
+    }
+
+}
+
